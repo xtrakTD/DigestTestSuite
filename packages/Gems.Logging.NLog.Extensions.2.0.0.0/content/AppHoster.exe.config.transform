@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+	<sectionGroup name="common">
+	  <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging" />
+	</sectionGroup>
+	<section name="nlog" type="NLog.Config.ConfigSectionHandler, NLog" />
+  </configSections>
+  <common>
+	<logging>
+	  <factoryAdapter type="Common.Logging.NLog.NLogLoggerFactoryAdapter, Common.Logging.NLog20">
+		<arg key="configType" value="INLINE" />
+	  </factoryAdapter>
+	</logging>
+  </common>
+  <nlog throwExceptions="true">
+	<extensions>
+	  <add assembly="Gems.Logging.NLog.Extensions" />
+	</extensions>
+	<targets>
+	  <target name="rabbitMQ"
+					ConnectionString="amqp://guest:guest@log.dev:5672/shovel"
+					type="RabbitMQ"
+					layout="{ &quot;app&quot;:&quot;$rootnamespace$&quot;,  &quot;environment&quot;:&quot;${json-encode:${environment:ENVIRONMENT_NAME}}&quot;, &quot;machine&quot;:&quot;${json-encode:${machinename}}&quot;, &quot;processId&quot;:&quot;${processid}&quot;, &quot;thread&quot;:&quot;${json-encode:${whenEmpty:${threadname}:whenEmpty=${threadid}}}&quot;, &quot;timestamp&quot;:&quot;${json-encode:${longdate:universalTime=true}}&quot;, &quot;message&quot;:&quot;${json-encode:${message}}&quot;, &quot;logger&quot;:&quot;${json-encode:${logger}}&quot;, &quot;level&quot;:&quot;${json-encode:${level}}&quot; ${onexception:, &quot;exception&quot;\:&quot;${json-encode:${exception:format=ToString}}&quot;}}"
+					topic="${level}"
+					exchange="logging-exchange"
+					durable="true"/>
+	</targets>
+	<rules>
+	  <logger name="*" minlevel="Debug" writeTo="rabbitMQ" />
+	</rules>
+  </nlog>
+</configuration>

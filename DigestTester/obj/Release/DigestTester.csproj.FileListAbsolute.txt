@@ -1,0 +1,9 @@
+C:\Sharp\gitrepo\d.minin\DigestTestSuite\DigestTester\obj\Release\DigestTester.csprojResolveAssemblyReference.cache
+C:\Sharp\gitrepo\d.minin\DigestTestSuite\DigestTester\obj\Release\DigestTester.csproj.CoreCompileInputs.cache
+C:\Sharp\gitrepo\Releases\DigestTester\Tools\ClientsPreparationForInactiveNotificator.sql
+C:\Sharp\gitrepo\Releases\DigestTester\Tools\DigestSendLauncher.ps1
+C:\Sharp\gitrepo\Releases\DigestTester\DigestTester.exe.config
+C:\Sharp\gitrepo\Releases\DigestTester\DigestTester.exe
+C:\Sharp\gitrepo\Releases\DigestTester\DigestTester.pdb
+C:\Sharp\gitrepo\d.minin\DigestTestSuite\DigestTester\obj\Release\DigestTester.exe
+C:\Sharp\gitrepo\d.minin\DigestTestSuite\DigestTester\obj\Release\DigestTester.pdb
